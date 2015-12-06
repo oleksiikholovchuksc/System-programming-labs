@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "constants.h"
+#include "common.h"
 
 
 int main() {
