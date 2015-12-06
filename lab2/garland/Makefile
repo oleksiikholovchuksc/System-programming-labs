@@ -1,4 +1,5 @@
 all:
+	rm -rf build
 	mkdir build
 
 	gcc writer1.c constants.c -o build/writer1
