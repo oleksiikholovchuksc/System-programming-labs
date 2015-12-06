@@ -1,7 +1,7 @@
 ## Lab 2
 ### Two readers & two writers working together
 
-Four programs should be created: two "*readers*" and two "*writers*". Each writer should write a message to shared memory exactly once, and each reader should print only one of two messages, so that messages from all writers are printed.
+Four programs should be created: two "*readers*" and two "*writers*". Writers write messages to shared memory and readers read and print it.
 
 This task should be done using three algorithms for breaking concurrency ties:
 
