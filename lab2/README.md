@@ -7,4 +7,4 @@ This task should be done using three algorithms for breaking concurrency ties:
 
 - **Garland**: one of readers is explicitly told to start the process, and every programs passes an execution flow to a concrete reader or writer.
 - **Spinlocks**: a program aquires shared resources before doing its job using atomic operations and other programs are constantly checking resources availability in loop.
-- **Peterson's algorithm**: break ties using [Peterson's algorithm](https://en.wikipedia.org/wiki/Peterson%27s_algorithm).
+- **Peterson's algorithm**: break ties using [Peterson's algorithm](https://en.wikipedia.org/wiki/Peterson%27s_algorithm). *Optional assignment. Got the idea, didn't implement due to the lack of time.*
