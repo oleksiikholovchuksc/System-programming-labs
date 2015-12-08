@@ -1,13 +1,22 @@
-public class Reader extends MyThread {
+public class Reader extends Worker {
 
-    public Reader(int threadId, Object sharedObject, QueueManager queueManager) {
-        super(threadId, sharedObject, queueManager);
-        System.out.println("Reader constructor called.");
+    public Reader(int threadId, SharedMessageStorage messageStorage, QueueManager queueManager) {
+        super(threadId, messageStorage, queueManager);
     }
 
     @Override
     public void run() {
-        System.out.println("Running the reader...");
+        while(true) {
+            synchronized(getMessageStorage()) {
+                waitForTurn();
+
+                System.out.println("The message is: " + getMessageStorage().getMessage());
+
+                getQueueManager().moveToNext();
+
+                fallAsleep();
+            }
+        }
     }
 
 }

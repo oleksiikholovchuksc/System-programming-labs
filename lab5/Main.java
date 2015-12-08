@@ -1,16 +1,22 @@
+import java.util.ArrayList;
+
+
 public class Main {
 
-    static Object commonObject = new Object();
-    static QueueManager commonQueueManager = new QueueManager();
+    static SharedMessageStorage messageStorage = new SharedMessageStorage();
     static final int writerThreadId = 0;
     static final int readerThreadId = 1;
+    static QueueManager commonQueueManager;
 
     public static void main(String[] args) {
-        Writer writer = new Writer(writerThreadId, commonObject, commonQueueManager);
-        Reader reader = new Reader(writerThreadId, commonObject, commonQueueManager);
+        ArrayList<Integer> workersIds = new ArrayList<Integer>();
+        workersIds.add(new Integer(writerThreadId));
+        workersIds.add(new Integer(readerThreadId));
 
-        writer.run();
-        reader.run();
+        commonQueueManager = new QueueManager(workersIds);
+
+        new Thread(new Writer(writerThreadId, messageStorage, commonQueueManager)).start();
+        new Thread(new Reader(readerThreadId, messageStorage, commonQueueManager)).start();
     }
 
 }
